@@ -1,1 +1,83 @@
-<p>job-form works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4">{{ isEditMode ? 'Edit Job' : 'Create New Job' }}</h2>
+    <form (ngSubmit)="onSubmit()" #jobForm="ngForm">
+      <div class="mb-3">
+        <label for="title" class="form-label">Job Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="job.title"
+          name="title"
+          #title="ngModel"
+        />
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+          Title is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="company" class="form-label">Company</label>
+        <input
+          type="text"
+          class="form-control"
+          id="company"
+          required
+          [(ngModel)]="job.company"
+          name="company"
+          #company="ngModel"
+        />
+        <div *ngIf="company.invalid && (company.dirty || company.touched)" class="text-danger">
+          Company is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="job.description"
+          name="description"
+          #description="ngModel"
+        ></textarea>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+          Description is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          required
+          [(ngModel)]="job.location"
+          name="location"
+          #location="ngModel"
+        />
+        <div *ngIf="location.invalid && (location.dirty || location.touched)" class="text-danger">
+          Location is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input
+          type="number"
+          class="form-control"
+          id="salary"
+          required
+          [(ngModel)]="job.salary"
+          name="salary"
+          #salary="ngModel"
+        />
+        <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" class="text-danger">
+          Salary is required.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="jobForm.invalid">
+        {{ isEditMode ? 'Update Job' : 'Create Job' }}
+      </button>
+    </form>
+  </div>
+  
