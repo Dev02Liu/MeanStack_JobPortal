@@ -1,1 +1,15 @@
-<p>job-list works! Ye</p>
+<div>
+    <h2 class="mb-4">Job Listings</h2>
+    <div class="list-group">
+      <a
+        *ngFor="let job of jobs"
+        class="list-group-item list-group-item-action"
+        (click)="navigateToJobDetail(job._id!)"
+      >
+        <h5 class="mb-1">{{ job.title }}</h5>
+        <p class="mb-1">{{ job.company }}</p>
+        <small>{{ job.location }}</small>
+      </a>
+    </div>
+  </div>
+  

@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'job-portal-frontend';
+
+  constructor(private router: Router) {}
+
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+  }
+
+  navigateToCreateJob(): void {
+    this.router.navigate(['/create']);
+  }
 }
