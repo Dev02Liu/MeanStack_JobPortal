@@ -1,1 +1,27 @@
-<p>job-detail works!</p>
+<div class="container mt-5">
+    <div *ngIf="job">
+      <h2 class="mb-4">{{ job.title }}</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Company:</strong> {{ job.company }}
+        </li>
+        <li class="list-group-item">
+          <strong>Description:</strong> {{ job.description }}
+        </li>
+        <li class="list-group-item">
+          <strong>Location:</strong> {{ job.location }}
+        </li>
+        <li class="list-group-item">
+          <strong>Salary:</strong> {{ job.salary | currency }}
+        </li>
+        <li class="list-group-item">
+          <strong>Date Posted:</strong> {{ job.datePosted | date }}
+        </li>
+      </ul>
+      <button class="btn btn-primary mt-3" (click)="goBack()">Back to Job Listings</button>
+    </div>
+    <div *ngIf="!job">
+      <p>Loading job details...</p>
+    </div>
+  </div>
+  

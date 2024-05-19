@@ -22,4 +22,18 @@ export class JobListComponent implements OnInit {
   navigateToJobDetail(id: string): void {
     this.router.navigate(['/job', id]);
   }
+
+  navigateToEditJob(event: Event, id: string): void {
+    event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
+    this.router.navigate(['/edit', id]);
+  }
+
+  deleteJob(event: Event, id: string): void {
+    event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
+    if (confirm('Are you sure you want to delete this job?')) {
+      this.jobService.deleteJob(id).subscribe(() => {
+        this.jobs = this.jobs.filter(job => job._id !== id);
+      });
+    }
+  }
 }
